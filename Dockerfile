@@ -1,0 +1,15 @@
+FROM debian:wheezy
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update -y -q && \
+  apt-get install -y mysql-client-5.5 python2.7 python-pip && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
+
+RUN pip install awscli
+
+ADD backup.sh /backup.sh
+RUN chmod 0755 /backup.sh
+
+ENTRYPOINT ["/backup.sh"]
