@@ -19,6 +19,9 @@ pathpattern=$PATH_DATEPATTERN
 
 count=1
 
+# sleep 30 second first to prevent weird error on Tutum
+sleep 30
+
 while [ 1 ]
 do
     # set date-dependent path element
